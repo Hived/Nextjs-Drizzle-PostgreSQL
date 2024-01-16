@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js with PostgreSQL and Drizzle ORM Starter
+
+A starter project/template for building web applications with Next.js, PostgreSQL, and Drizzle ORM. This project includes a basic setup with Drizzle, an Object-Relational Mapping (ORM) library, and uses Docker for PostgreSQL, making it easy to kickstart your development with Next.js, PostgreSQL, Drizzle, and containerization.
+
+## Features
+
+- **Next.js:** React framework for building web applications.
+- **PostgreSQL:** A powerful open-source relational database system.
+- **Drizzle ORM:** Object-Relational Mapping for simplified database interactions.
+- **Docker:** Containerization for PostgreSQL database.
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Set up PostgreSQL with Docker:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    - Make sure you have Docker installed.
+    - Update the database configuration in `docker-compose.yml` and `.env`. Replace `myusername`, `mypassword`, and `mydatabase` with your desired PostgreSQL username, password, and database name and `/path/on/host` with your path.
+    - Run the following command to start a PostgreSQL container:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    ```bash
+    docker compose up
+    ```
 
-## Learn More
+3. **Run the application:**
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    The application will be accessible at `http://localhost:3000`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. **Run the Drizzle ORM:**
 
-## Deploy on Vercel
+    - Push your schema changes directly to the database
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npx drizzle-kit push:pg
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    - Run the drizzle studio
+
+    ```bash
+    npx drizzle-kit studio
+    ```
+
+    The application will be accessible at `https://local.drizzle.studio/`.
+
+## Contributing
+
+Feel free to contribute by opening issues or pull requests.
